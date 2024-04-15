@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Painting</title>
+        <link rel='stylesheet' href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+    </head>
+     <body>
+        <h1>My Canvas</h1>
+        <div class="color-picker"> 
+          <div class="color" id='selected'></div>
+          <div class="color" style="background-color:#be2edd;" onclick="changeColor(this);"></div>
+          <div class="color" style="background-color:rgb(255, 211, 42);" onclick="changeColor(this);"></div>
+          <div class="color" style="background-color:blue;" onclick="changeColor(this);"></div>
+          <div class="color" style="background-color:red;" onclick="changeColor(this);"></div>
+          <div class="color" style="background-color:#fd79a8;" onclick="changeColor(this);"></div>
+          <div class="color" style="background-color:#00b894;" onclick="changeColor(this);"></div>
+          <div class="color" style="background-color:rgb(103, 230, 220);" onclick="changeColor(this);"></div>
+          <div class="color" style="background-color:rgb(61, 61, 61);" onclick="changeColor(this);"></div>
+       </div>  
+       <button onclick="clearCanvas();">
+         Clear Canvas
+       </button>
+      <div id="canvas"></div>
+      <script> 
+        var canvas = document.getElementById('canvas');
+        function addBoxes() {      
+        for(var i = 0; i < 200; i = i + 1) {
+          canvas.innerHTML += "<div class='box' onclick='fillCanvas(this);'></div>"; 
+         }
+        }
+        addBoxes();
+        function clearCanvas() {
+          canvas.innerHTML = "";
+          addBoxes();
+        }
+        var selectedColor = '';
+        
+        function fillCanvas(box) {
+          box.style.backgroundColor = selectedColor;
+          box.style.borderColor = selectedColor;
+        }
+        function changeColor(colorBox) {
+        selectedColor = colorBox.style.backgroundColor;
+        document.getElementById('selected').style.backgroundColor = selectedColor; 
+        }
+       </script>
+</body>
+</html>
